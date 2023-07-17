@@ -1,0 +1,3 @@
+[submodule "cplex-samples"]
+	path = cplex-samples
+	url = git@github.com:cswaroop/cplex-samples.git
