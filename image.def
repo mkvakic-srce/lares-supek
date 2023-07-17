@@ -1,0 +1,43 @@
+Bootstrap: docker
+From: mathworks/matlab:R2020b
+
+%files
+  cos_installer_preview-22.1.1.0.R0-M08SWML-linux-x86-64.bin /my_files/cplex_installer
+  response.txt /my_files/.
+
+%environment
+  export PATH=/opt/cplex/cplex/bin:/opt/EPANET/build/bin:$PATH
+  
+%post
+
+  # apt
+  apt update
+  apt install cmake -y
+  apt install build-essential -y
+  apt install software-properties-common -y
+  apt install curl -y
+
+  # python
+  add-apt-repository ppa:deadsnakes/ppa -y
+  apt install python3.11
+  update-alternatives --install /usr/bin/python  python  /usr/bin/python3.8  1
+  update-alternatives --install /usr/bin/python  python  /usr/bin/python3.11 2
+  update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.8  1
+  update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.11 2
+  curl -sS https://bootstrap.pypa.io/get-pip.py | python3
+
+  # pip
+  pip install pip-install-test
+
+  # epanet
+  cd /opt
+  git clone -b v2.2 https://github.com/OpenWaterAnalytics/EPANET.git
+  cd EPANET
+  mkdir -p build
+  cd build
+  cmake ..
+  cmake --build . --config Release
+
+  # cplex
+  /my_files/cplex_installer -f /my_files/response.txt
+  python /opt/cplex/python/setup.py install
