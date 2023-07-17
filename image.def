@@ -19,7 +19,7 @@ From: mathworks/matlab:R2020b
 
   # python
   add-apt-repository ppa:deadsnakes/ppa -y
-  apt install python3.11
+  apt install python3.11 -y
   update-alternatives --install /usr/bin/python  python  /usr/bin/python3.8  1
   update-alternatives --install /usr/bin/python  python  /usr/bin/python3.11 2
   update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.8  1
@@ -40,4 +40,4 @@ From: mathworks/matlab:R2020b
 
   # cplex
   /my_files/cplex_installer -f /my_files/response.txt
-  python /opt/cplex/python/setup.py install
+  pip install docplex
