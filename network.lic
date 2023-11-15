@@ -1,0 +1,3 @@
+# https://github.com/mathworks-ref-arch/matlab-dockerfile/tree/main#use-the-network-license-manager
+SERVER MyServerName.example.com <optional-mac-address> 27000
+USE_SERVER

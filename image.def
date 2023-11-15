@@ -3,8 +3,9 @@ From: mathworks/matlab:R2020b
 
 %files
   cos_installer_preview-22.1.1.0.R0-M08SWML-linux-x86-64.bin /my_files/cplex_installer
-  response.txt /my_files/.
-  mpm_input_r2020b.txt /my_files/.
+  response.txt /my_files/response.txt
+  mpm_input_r2020b.txt /my_files/mpm_input_r2020b.txt
+  network.lic /opt/matlab/R2020b/licenses/network.lic
 
 %environment
   export PATH=/opt/cplex/cplex/bin:/opt/EPANET/build/bin:$PATH
